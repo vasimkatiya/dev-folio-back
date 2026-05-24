@@ -1,4 +1,4 @@
-const monogoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const aboutSchema = new mongoose.Schema({
     userId: {

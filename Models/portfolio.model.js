@@ -2,37 +2,24 @@ const mongoose = require('mongoose');
 
 const portfolioSchema = new mongoose.Schema({
 
-    domain: {
-        type: String,
-        required: true
-    },
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
-        required: true
-    },
-    home: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'home',
-        required: true
+    home:{
+        type:String,
+        required:true
     },
     about:{
         type: String,
         required: true  
     },
     contact: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'contact',
-        required: true
+        type:String,
+        required:true
     },
     project: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'project',
+        type: String,
         required: true
     },
     skills: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'skills',
+        type: String,
         required: true
     }
 }, { timestamps: true });

@@ -5,15 +5,18 @@ require('dotenv').config();
 
 exports.register = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { username, email, password } = req.body;
 
-        const alreadyExists = await userModel.findOne({ email });
+        const alreadyExists = await userModel.findOne({$or:[
+            {email},
+            {username}
+        ]});
         if (alreadyExists) {
             return res.status(400).json({ message: 'User already exists' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new userModel({ name, email, password: hashedPassword });
+        const newUser = new userModel({ username, email, password: hashedPassword });
         await newUser.save();
 
         res.status(201).json({ message: 'User registered successfully' });
@@ -39,7 +42,7 @@ exports.login = async (req, res) => {
         }
 
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET,{expiresIn:'14d'});
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
         res.cookie("token", token, {
         httpOnly: true,
@@ -61,4 +64,4 @@ exports.logout = (req, res) => {
         sameSite: "none"
     });
     res.status(200).json({ message: 'Logout successful' });
-}           
+}
