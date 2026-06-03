@@ -6,7 +6,7 @@ exports.projectController = async (req,res) =>{
         const {project_name,tech,link,github_link} = req.body;
         const user_id = req.user?.id;
 
-        if(!project_name || !tech || !link || !github_link || !user_id)
+        if(!project_name || !tech || !user_id)
         {
             return res.status(400).json({
                 message:'all fields are requires.',

@@ -6,7 +6,7 @@ exports.contactController = async (req,res) =>{
         const user_id = req.user?.id;
         const {email,phone,instagram,linkedin,github} = req.body;
 
-        if(!user_id || !email || !phone || !instagram || !linkedin || !github)
+        if(!user_id || !email || !phone )
         {
             return res.status(400).json({
                 message:'all fileds are requires.'
