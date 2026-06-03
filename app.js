@@ -15,7 +15,7 @@ const cors = require('cors')
 const app = express();
 
 app.use(cors({
-  origin:"https://dev-folio83.netlify.app/",
+  origin:"https://dev-folio83.netlify.app",
   credentials:true
 }));
 
