@@ -16,15 +16,12 @@ const contactSchema = new mongoose.Schema({
     },
     instagram: {
         type: String,
-        required: true
     },
     linkedin: {
         type: String,
-        required: true
     },
     github: {
         type: String,
-        required: true
     }
 }, { timestamps: true });
 
